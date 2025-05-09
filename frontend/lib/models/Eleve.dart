@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class Eleve {
-  late int _id;
+  late String _id;
   late String nom;
   late String prenom;
   late String classe;

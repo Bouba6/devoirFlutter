@@ -41,6 +41,7 @@ class _ElevePageState extends State<ElevePage> {
                 return const Center(child: Text("Erreur de chargement ..."));
               } else if (snapshot.hasData) {
                 final EleveList = snapshot.data!;
+                print(EleveList);
                 return ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
