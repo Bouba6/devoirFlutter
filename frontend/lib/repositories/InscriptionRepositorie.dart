@@ -75,26 +75,22 @@ class Inscriptionrepositorie extends InscriptionRepositorieInterface {
         print("Réponse vide");
         return [];
       }
-
-      final data = jsonDecode(body); // data est une List
+      final data = jsonDecode(body);
       List<Eleve> eleves = [];
 
-      if (data is List) {
-        for (var inscription in data) {
-          if (inscription is Map && inscription.containsKey('Etudiant')) {
-            var etudiants = inscription['Etudiant'];
-            if (etudiants is List) {
-              for (var etudiant in etudiants) {
-                eleves.add(Eleve.fromJson(etudiant));
-              }
+      for (var inscription in data) {
+        if (inscription.containsKey('Etudiant')) {
+          var etudiants = inscription['Etudiant'];
+          if (etudiants is List) {
+            for (var etudiant in etudiants) {
+              eleves.add(Eleve.fromJson(etudiant));
             }
           }
         }
       }
-
       return eleves;
     } else {
-      throw Exception('Erreur de chargement des élèves');
+      throw Exception('Failed to load album');
     }
   }
 }
